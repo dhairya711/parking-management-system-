@@ -1,0 +1,142 @@
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f39c12, #e67e22); /* Classy orange gradient */
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Container Styling */
+.container {
+    max-width: 850px; /* Slightly wider for better readability */
+    margin: auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 20px; /* Softer rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Subtle shadow with reduced opacity */
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+    transform: translateY(-8px); /* Slightly lifted hover effect */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h1, h2 {
+    font-weight: 700; /* Bolder headings */
+    margin-bottom: 20px;
+    letter-spacing: 1px; /* Slightly spaced letters for a modern look */
+    color: #444;
+}
+
+h1 {
+    font-size: 2.8rem; /* Larger and more prominent */
+    color: #d35400; /* Bold orange for main heading */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+h2 {
+    font-size: 2rem;
+    color: #e67e22; /* Slightly lighter orange for secondary headings */
+}
+
+/* Current Parking */
+.current-parking {
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+}
+
+.current-parking p {
+    background: #e67e22;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.current-parking p:hover {
+    background: #d35400; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background: #fdf2e3; /* Light warm beige to match the orange theme */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    animation: fadeIn 0.5s ease; /* Table appears with a fade-in effect */
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #e67e22;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+td {
+    font-size: 1rem;
+    color: #444;
+    background-color: #fff; /* Lighter background for cleaner contrast */
+}
+
+tr:last-child td {
+    border-bottom: none; /* Remove border for the last row */
+}
+
+tr:hover td {
+    background: rgba(230, 126, 34, 0.15); /* Subtle orange highlight on hover */
+    transition: background 0.3s ease;
+}
+
+/* Back Button Styling */
+.back-button {
+    margin-top: 25px;
+}
+
+.back-button a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fff;
+    background: linear-gradient(90deg, #e74c3c, #d35400); /* Orange-red gradient button */
+    padding: 15px 35px;
+    border-radius: 35px;
+    display: inline-block;
+    font-weight: 700;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.back-button a:hover {
+    background: linear-gradient(90deg, #d35400, #e67e22); /* Slightly reversed gradient on hover */
+    transform: scale(1.1); /* Larger hover effect */
+}
+
+/* Fade-in Animation for Table */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

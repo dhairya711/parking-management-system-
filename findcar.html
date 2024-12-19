@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking History</title>
+    <link rel="stylesheet" href="findcar.css"> 
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8ffae, #43c6ac); /* Vibrant gradient background */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 25px;
+            background: #fff;
+            border-radius: 20px; /* Softer rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #0056b3; /* Deep blue for the main heading */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #666; /* Softer color for secondary headings */
+            margin-bottom: 20px;
+        }
+
+        /* Current Parking */
+        .current-parking {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .current-parking p {
+            background: #0056b3;
+            color: #fff;
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .current-parking p:hover {
+            background: #004494; /* Darker shade on hover */
+            transform: scale(1.05); /* Slight enlargement on hover */
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: #f4f4f4;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #0056b3;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        td {
+            font-size: 1rem;
+            color: #444;
+            background-color: #fff; /* Lighter background for cleaner contrast */
+        }
+
+        tr:last-child td {
+            border-bottom: none; /* Remove border for the last row */
+        }
+
+        tr:hover td {
+            background: rgba(0, 123, 255, 0.15); /* Subtle blue highlight on hover */
+            transition: background 0.3s ease;
+        }
+
+        /* Back Button Styling */
+        .back-button {
+            margin-top: 25px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: #fff;
+            background: linear-gradient(90deg, #28a745, #218838); /* Green gradient button */
+            padding: 15px 35px;
+            border-radius: 35px;
+            display: inline-block;
+            font-weight: 700;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(90deg, #218838, #1e7e34); /* Slightly darker gradient on hover */
+            transform: scale(1.1); /* Larger hover effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Parking History</h1>
+
+        <!-- Current Parking Area -->
+        <div class="current-parking">
+            <h2>Current Parking</h2>
+            <p id="currentParking">Loading...</p>
+        </div>
+
+        <!-- Parking History -->
+        <div class="history">
+            <h2>Last 30 Days</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Parking Area</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTable">
+                    <!-- Rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="back-button">
+            <a href="tp2.html">⬅ Back to Selection</a>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve selected parking area from localStorage
+    const selectedParking = localStorage.getItem("selectedParking");
+
+    // Display the selected parking area in the "Current Parking" section
+    document.getElementById("currentParking").textContent =
+        selectedParking || "No parking currently selected.";
+
+    // Retrieve parking history and filter for the last 30 days
+    const parkingHistory = JSON.parse(localStorage.getItem("parkingHistory")) || [];
+    const historyTable = document.getElementById("historyTable");
+    const now = new Date();
+
+    const last30Days = parkingHistory.filter(entry => {
+        const entryDate = new Date(entry.date);
+        const differenceInDays = (now - entryDate) / (1000 * 60 * 60 * 24);
+        return differenceInDays <= 30;
+    });
+
+    if (last30Days.length === 0) {
+        historyTable.innerHTML = "<tr><td colspan='2'>No parking history available for the last 30 days.</td></tr>";
+    } else {
+        last30Days.forEach(entry => {
+            const row = document.createElement("tr");
+            const dateCell = document.createElement("td");
+            const parkingCell = document.createElement("td");
+
+            dateCell.textContent = new Date(entry.date).toLocaleDateString();
+            parkingCell.textContent = entry.parking;
+
+            row.appendChild(dateCell);
+            row.appendChild(parkingCell);
+            historyTable.appendChild(row);
+        });
+    }
+});
+    </script>
+</body>
+</html>
