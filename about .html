@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Smart Parking Assistance & Traffic Control</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: #ff7200;
+            line-height: 1.6;
+            padding: 0;
+            background-image: url('https://th.bing.com/th/id/R.34865653c2bc52414054d242ccdbf808?rik=4bin7XcSytZKNQ&riu=http%3a%2f%2feskipaper.com%2fimages%2fparking-lot-wallpapers-1.jpg&ehk=bLlmIlY%2b7wWaixQJRNLSoLB%2byETSlWeoW4DXOsukNu4%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Header */
+        header {
+            color: #ff7200;
+            padding: 70px 20px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.8); /* Transparent black for text visibility */
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-top: 10px;
+        }
+
+        /* Main Section */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ff7200;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            color: #ff7200;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        /* Features Section */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            background-color: #000;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #ff7200;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.6rem;
+            color: #ff7200;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        /* Why Choose Us Section */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+            text-align: left;
+            display: inline-block;
+            max-width: 600px;
+        }
+
+        ul li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #ffffff;
+        }
+
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff7200;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ff7200;
+            color: black;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Smart Parking Assistance & Traffic Flow Management</h1>
+        <p>Your solution for smarter, safer, and more efficient parking and traffic management</p>
+    </header>
+
+    <!-- About Section -->
+    <section>
+        <h2>About Our Website</h2>
+        <p>Our Smart Parking Assistance and Traffic Control platform is designed to revolutionize how we manage parking spaces and traffic flow in urban areas. By leveraging cutting-edge technology, our system offers real-time data and automated solutions that make parking hassle-free while improving traffic conditions.</p>
+    </section>
+
+    <!-- Key Features Section -->
+    <section>
+        <h2>Key Features</h2>
+        <div class="container">
+            <div class="feature">
+                <img src="https://th.bing.com/th?id=OIP.HINCfo5JNhDJDzhP4NqmRAHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Smart Parking">
+                <h3>Smart Parking Assistance</h3>
+                <p>Our intelligent parking system helps drivers locate available parking spots in real-time. The platform uses sensors, cameras, and mobile apps to provide users with the most accurate information on nearby parking spaces.</p>
+            </div>
+            <div class="feature">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Traffic Control">
+                <h3>Real-Time Traffic Control</h3>
+                <p>We provide dynamic traffic control systems that adjust traffic lights and signals based on real-time traffic data. This helps reduce congestion, minimize delays, and optimize traffic flow throughout the city.</p>
+            </div>
+            <div class="feature">
+                <img src="https://th.bing.com/th?id=OIP.TZvfPXO5Cs1630A93nkbPAHaD_&w=340&h=183&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Data Analytics">
+                <h3>Data Analytics</h3>
+                <p>Our platform collects and analyzes traffic and parking data to give city planners and businesses insights on usage patterns. This data helps optimize city infrastructure and improve planning for future developments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section>
+        <h2>Why Choose Us?</h2>
+        <p>Our system is designed to enhance the urban experience for both drivers and city authorities. With our easy-to-use platform and seamless integration with existing infrastructure, we offer:</p>
+        <ul>
+            <li>Reduced traffic congestion</li>
+            <li>Faster parking with real-time guidance</li>
+            <li>Cost-effective traffic management for cities</li>
+            <li>Improved environmental sustainability by reducing idling time</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Smart Parking Assistance & Traffic Control. All rights reserved.</p>
+    </footer>
+</body>
+</html>

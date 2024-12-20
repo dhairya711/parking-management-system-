@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Page</title>
+    <link rel="stylesheet" href="second.css"> <!-- Optional external CSS -->
+</head>
+<body>
+
+<div class="container">
+    <h2>TRANSACTION</h2> <!-- Title updated to "TRANSACTION" -->
+    <form id="transactionForm">
+        <!-- Payment Method Dropdown -->
+        <div class="form-group">
+            <label for="paymentMethod">Select Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod">
+                <option value="UPI">UPI</option>
+                <option value="Debit">Debit Card</option>
+                <option value="Credit">Credit Card</option>
+            </select>
+        </div>
+
+        <!-- UPI ID input field -->
+        <div class="form-group" id="upiIdGroup">
+            <label for="upiId">Enter UPI ID:</label>
+            <input type="text" id="upiId" name="upiId">
+        </div>
+
+        <!-- Card Number input field (for Debit and Credit Cards) -->
+        <div class="form-group" id="cardDetailsGroup" style="display:none;">
+            <label for="cardNumber">Card Number:</label>
+            <input type="number" id="cardNumber" name="cardNumber">
+        </div>
+
+        <!-- Expiry Date input field (for Debit and Credit Cards) -->
+        <div class="form-group" id="expiryDetailsGroup" style="display:none;">
+            <label for="expiryDate">Expiry Date (MM/YY):</label>
+            <input type="text" id="expiryDate" name="expiryDate">
+        </div>
+
+        <!-- CVV input field (for Debit and Credit Cards) -->
+        <div class="form-group" id="cvvDetailsGroup" style="display:none;">
+            <label for="cvv">CVV:</label>
+            <input type="number" id="cvv" name="cvv">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="button" id="proceedButton">Proceed</button>
+    </form>
+</div>
+
+<!-- Transaction Status Popup -->
+<div id="popup" class="popup">
+    <h3 id="popupMessage"></h3>
+    <button onclick="closePopup()">Close</button>
+</div>
+
+<script src="second.js"></script> <!-- External JavaScript -->
+</body>
+</html>

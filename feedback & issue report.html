@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback & Issue Reporting</title>
+  <link rel="stylesheet" href="feedback style.css"> 
+</head>
+<body class="feedback-container">
+  <div class="feedback-form">
+    <h2>Feedback & Issue Reporting</h2>
+    <form action="/submit-feedback" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Name (Optional):</label>
+        <input type="text" id="name" name="name" placeholder="Your Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="5" placeholder="Provide details here..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority/Severity:</label>
+        <select id="priority" name="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="screenshot">Upload Screenshot (Optional):</label>
+        <input type="file" id="screenshot" name="screenshot" accept="image/*">
+        <p class="note">Accepted formats: JPG, PNG, GIF</p>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
