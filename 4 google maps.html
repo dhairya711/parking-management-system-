@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Area Map</title>
+    <link rel="stylesheet" href="googlemaps style.css"> 
+    <style>
+        .hidden {
+            display: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .map-container {
+            margin-bottom: 20px;
+        }
+        .photos {
+            margin-bottom: 20px;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .proceed-button {
+            margin-top: 20px;
+        }
+        .notification {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: #fff;
+            border-radius: 5px;
+            display: none;
+            font-size: 1rem;
+        }
+        .success {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Find Your Parking Spot</h1>
+        
+        <!-- Map Section -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.5149709191382!2d75.93273237515601!3d22.746262479368337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962e3cd9d3de1ad%3A0xebaf3ee69f583ff5!2sPhoenix%20Citadel%20Mall!5e0!3m2!1sen!2sin!4v1732905691734!5m2!1sen!2sin" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+        <!-- Photos Section -->
+        <div class="photos hidden" id="parkingPhoto">
+            <h2>📸 Parking Area Overview</h2>
+            <img src="photo1.png" alt="Parking Area" />
+        </div>
+
+        <!-- Location Selection -->
+        <div class="location-selection">
+            <h2>📍 Select a Location</h2>
+            <select id="locationSelect" onchange="handleLocationChange()">
+                <option value="">-- Select Location --</option>
+                <option value="Phoenix Mall Indore">Phoenix Mall Indore</option>
+                <option value="Other Location">Other Location</option>
+            </select>
+        </div>
+
+        <!-- Parking Options Section -->
+        <div class="options hidden" id="parkingOptions">
+            <h2>🎯 Choose a Parking Area</h2>
+            <div class="option">
+                <input type="radio" id="option1" name="parking" value="Parking Orange" onclick="checkAvailability(1)">
+                <label for="option1">🟧 Parking Orange</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option2" name="parking" value="Parking Blue" onclick="checkAvailability(2)">
+                <label for="option2">🟦 Parking Blue</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option3" name="parking" value="Parking Pink" onclick="checkAvailability(3)">
+                <label for="option3">🟪 Parking Pink</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option4" name="parking" value="Parking Green" onclick="checkAvailability(4)">
+                <label for="option4">🟩 Parking Green</label>
+            </div>
+        </div>
+
+        <!-- Notification Section -->
+        <div class="notification" id="notification"></div>
+
+        <!-- Proceed Button -->
+		<div class="proceed-button " id="proceedButton">
+			<button type="button" onclick="proceedToDetails()">🚀 Proceed</button>
+		</div>		
+    </div>
+
+    <script>
+let selectedParkingArea = null;
+
+function handleLocationChange() {
+    const locationSelect = document.getElementById("locationSelect");
+    const parkingOptions = document.getElementById("parkingOptions");
+    const parkingPhoto = document.getElementById("parkingPhoto");
+
+    if (locationSelect.value === "Phoenix Mall Indore") {
+        parkingOptions.classList.remove("hidden");
+        parkingPhoto.classList.remove("hidden");
+    } else {
+        parkingOptions.classList.add("hidden");
+        parkingPhoto.classList.add("hidden");
+    }
+}
+
+function checkAvailability(option) {
+    const notification = document.getElementById("notification");
+    const proceedButton = document.getElementById("proceedButton");
+    const parkingNames = ["Parking Orange", "Parking Blue", "Parking Pink", "Parking Green"];
+    selectedParkingArea = parkingNames[option - 1]; // Store the selected parking area
+
+    if (option === 1 || option === 3) { // Parking Orange and Parking Pink are available
+        notification.style.display = "block";
+        notification.className = "notification success";
+        notification.textContent = `✅ ${selectedParkingArea} is available. You can proceed to payment.`;
+        proceedButton.classList.remove("hidden"); // Show the Proceed button
+    } else {
+        notification.style.display = "block";
+        notification.className = "notification";
+        notification.textContent = `❌ ${selectedParkingArea} is full. Please choose another option.`;
+        proceedButton.classList.add("hidden"); // Hide the Proceed button
+    }
+}
+
+function proceedToDetails() {
+    if (!selectedParkingArea) {
+        alert("Please select a parking option before proceeding.");
+        return;
+    }
+
+    // Save the selected parking area to localStorage
+    localStorage.setItem("selectedParking", selectedParkingArea);
+
+    // Add to parking history
+    let parkingHistory = JSON.parse(localStorage.getItem("parkingHistory")) || [];
+    const newEntry = {
+        parking: selectedParkingArea,
+        date: new Date().toISOString(), // Save the current date and time
+    };
+    parkingHistory.push(newEntry);
+    localStorage.setItem("parkingHistory", JSON.stringify(parkingHistory));
+
+    // Navigate to the second page
+    window.location.href = "findcar.html";
+}
+
+    </script>
+</body>
+</html>

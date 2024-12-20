@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('https://wallpaperaccess.com/full/1978968.jpg') no-repeat center center/cover;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff7200;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ff7200;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ff7200;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: white;
+        }
+
+        .otp-section {
+            display: none;
+        }
+
+        .btn {
+            background-color: #ff7200;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: #ff7200;
+            transition: 0.3s;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+
+        <!-- Personal Details Section -->
+        <div class="section">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+            
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" required>
+            
+            <label for="id-proof">ID Proof Type</label>
+            <select id="id-proof" required>
+                <option value="">--Select ID Proof--</option>
+                <option value="Aadhar">Aadhar Card</option>
+                <option value="PAN">PAN Card</option>
+                <option value="Voter">Voter ID</option>
+            </select>
+            
+            <label for="id-number">ID Number</label>
+            <input type="text" id="id-number" placeholder="Enter ID Number" required>
+        </div>
+
+        <!-- Address Section -->
+        <div class="section">
+            <label for="state">State</label>
+            <input type="text" id="state" placeholder="Enter your state" required>
+            
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Enter your city" required>
+            
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode" placeholder="Enter your pincode" required>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section">
+            <label for="contact">Contact Information</label>
+            <input type="tel" id="contact" placeholder="Enter your contact number" required>
+        </div>
+
+        <!-- OTP Section -->
+        <div class="section otp-section" id="otp-section">
+            <label for="otp">Enter OTP</label>
+            <input type="text" id="otp" placeholder="Enter OTP" required>
+        </div>
+
+        <!-- Buttons -->
+        <button class="btn" id="proceed-btn" onclick="requestOTP()">Proceed</button>
+        <button class="btn otp-section" id="confirm-btn" onclick="confirmOTP()" style="display: none;">Confirm OTP</button>
+
+        <p class="message" id="confirmation-message"></p>
+    </div>
+
+    <script>
+        // Function to request OTP
+        function requestOTP() {
+            document.getElementById('otp-section').style.display = 'block';
+            document.getElementById('confirm-btn').style.display = 'block';
+            document.getElementById('proceed-btn').style.display = 'none';
+            alert('An OTP has been sent to your contact number.');
+        }
+
+        // Function to confirm OTP
+        // Function to confirm OTP
+        function confirmOTP() {
+            const otpInput = document.getElementById('otp').value;
+             if (otpInput === '') {
+               alert('Please enter the OTP!');
+             } else {
+                      document.getElementById('confirmation-message').innerText = 'OTP Verified! Your registration is successful.';
+        // Redirect to the login page after a short delay
+                          setTimeout(() => {
+            window.location.href = '3 after login page.html'; // Change 'login.html' to the actual name of your login page
+                   }, 2000); // Redirects after 2 seconds
+    }
+}
+        
+    </script>
+</body>
+</html>
